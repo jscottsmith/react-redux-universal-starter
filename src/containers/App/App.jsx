@@ -8,6 +8,7 @@ import { InfoBar, SiteNav } from 'components';
 import { push } from 'react-router-redux';
 import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
+import '../../sass/styles.scss';
 
 @asyncConnect([{
     promise: ({ store: { dispatch, getState } }) => {
