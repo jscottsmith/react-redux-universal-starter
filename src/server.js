@@ -24,8 +24,8 @@ const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
 const proxy = httpProxy.createProxyServer({
-  target: targetUrl,
-  ws: true,
+    target: targetUrl,
+    ws: true,
 });
 
 app.use(compression());
@@ -35,92 +35,91 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 
 // Proxy to API server
 app.use('/api', (req, res) => {
-  proxy.web(req, res, { target: targetUrl });
+    proxy.web(req, res, { target: targetUrl });
 });
 
 app.use('/ws', (req, res) => {
-  proxy.web(req, res, { target: targetUrl + '/ws' });
+    proxy.web(req, res, { target: targetUrl + '/ws' });
 });
 
 server.on('upgrade', (req, socket, head) => {
-  proxy.ws(req, socket, head);
+    proxy.ws(req, socket, head);
 });
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 proxy.on('error', (error, req, res) => {
-  let json;
-  if (error.code !== 'ECONNRESET') {
-    console.error('proxy error', error);
-  }
-  if (!res.headersSent) {
-    res.writeHead(500, { 'content-type': 'application/json' });
-  }
+    if (error.code !== 'ECONNRESET') {
+        console.error('proxy error', error);
+    }
+    if (!res.headersSent) {
+        res.writeHead(500, { 'content-type': 'application/json' });
+    }
 
-  json = { error: 'proxy_error', reason: error.message };
-  res.end(JSON.stringify(json));
+    const json = { error: 'proxy_error', reason: error.message };
+    res.end(JSON.stringify(json));
 });
 
 app.use((req, res) => {
-  if (__DEVELOPMENT__) {
+    if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
-    webpackIsomorphicTools.refresh();
-  }
-  const client = new ApiClient(req);
-  const memoryHistory = createHistory(req.originalUrl);
-  const store = createStore(memoryHistory, client);
-  const history = syncHistoryWithStore(memoryHistory, store);
+        webpackIsomorphicTools.refresh();
+    }
+    const client = new ApiClient(req);
+    const memoryHistory = createHistory(req.originalUrl);
+    const store = createStore(memoryHistory, client);
+    const history = syncHistoryWithStore(memoryHistory, store);
 
-  function hydrateOnClient() {
-    res.send('<!doctype html>\n' +
+    function hydrateOnClient() {
+        res.send('<!doctype html>\n' +
       ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store}/>));
-  }
+    }
 
-  if (__DISABLE_SSR__) {
-    hydrateOnClient();
-    return;
-  }
+    if (__DISABLE_SSR__) {
+        hydrateOnClient();
+        return;
+    }
 
-  match({ history, routes: getRoutes(store), location: req.originalUrl }, (error, redirectLocation, renderProps) => {
-    if (redirectLocation) {
-      res.redirect(redirectLocation.pathname + redirectLocation.search);
-    } else if (error) {
-      console.error('ROUTER ERROR:', pretty.render(error));
-      res.status(500);
-      hydrateOnClient();
-    } else if (renderProps) {
-      loadOnServer({ ...renderProps, store, helpers: { client } }).then(() => {
-        const component = (
-          <Provider store={store} key="provider">
-            <ReduxAsyncConnect {...renderProps} />
-          </Provider>
+    match({ history, routes: getRoutes(store), location: req.originalUrl }, (error, redirectLocation, renderProps) => {
+        if (redirectLocation) {
+            res.redirect(redirectLocation.pathname + redirectLocation.search);
+        } else if (error) {
+            console.error('ROUTER ERROR:', pretty.render(error));
+            res.status(500);
+            hydrateOnClient();
+        } else if (renderProps) {
+            loadOnServer({ ...renderProps, store, helpers: { client } }).then(() => {
+                const component = (
+                    <Provider store={store} key="provider">
+                        <ReduxAsyncConnect {...renderProps} />
+                    </Provider>
         );
 
-        res.status(200);
+                res.status(200);
 
-        global.navigator = { userAgent: req.headers['user-agent'] };
+                global.navigator = { userAgent: req.headers['user-agent'] };
 
-        res.send('<!doctype html>\n' +
+                res.send('<!doctype html>\n' +
           ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>));
-      });
-    } else {
-      res.status(404).send('Not found');
-    }
-  });
+            });
+        } else {
+            res.status(404).send('Not found');
+        }
+    });
 });
 
 if (config.port) {
-  server.listen(config.port, (err) => {
-    if (err) {
-      console.error(err);
-    }
-    const green = '\x1b[32m';
-    const red = '\x1b[31m';
-    const dim = '\x1b[2m';
-    console.log('\n', dim, '================| Server Ready |================\n');
-    console.log(green, `==> 🌴  ${config.app.title} is running, talking to API server on ${config.apiPort}`);
-    console.log(green, '==> 💊  Open', red, `http://${config.host}:${config.port}`, green, 'in a browser to view the app.');
-  });
+    server.listen(config.port, (err) => {
+        if (err) {
+            console.error(err);
+        }
+        const green = '\x1b[32m';
+        const red = '\x1b[31m';
+        const dim = '\x1b[2m';
+        console.log('\n', dim, '================| Server Ready |================\n');
+        console.log(green, `==> 🌴  ${config.app.title} is running, talking to API server on ${config.apiPort}`);
+        console.log(green, '==> 💊  Open', red, `http://${config.host}:${config.port}`, green, 'in a browser to view the app.');
+    });
 } else {
-  console.error('==> ☠   ERROR: No PORT environment variable has been specified');
+    console.error('==> ☠   ERROR: No PORT environment variable has been specified');
 }

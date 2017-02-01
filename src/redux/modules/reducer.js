@@ -10,15 +10,15 @@ import info from './info';
 import widgets from './widgets';
 
 export default combineReducers({
-  routing: routerReducer,
-  reduxAsyncConnect,
-  auth,
-  multireducer: multireducer({
-    counter1: counter,
-    counter2: counter,
-    counter3: counter,
-  }),
-  info,
-  pagination,
-  widgets,
+    routing: routerReducer,
+    reduxAsyncConnect,
+    auth,
+    multireducer: multireducer({
+        counter1: counter,
+        counter2: counter,
+        counter3: counter,
+    }),
+    info,
+    pagination,
+    widgets,
 });

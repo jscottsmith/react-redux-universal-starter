@@ -7,25 +7,25 @@ import { increment } from 'redux/modules/counter';
   { increment }
 )
 export default class CounterButton extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    count: PropTypes.number,
-    increment: PropTypes.func.isRequired,
-  }
+    static propTypes = {
+        className: PropTypes.string,
+        count: PropTypes.number,
+        increment: PropTypes.func.isRequired,
+    }
 
-  props = {
-    className: '',
-  }
+    props = {
+        className: '',
+    }
 
-  render() {
-    const { count, increment } = this.props; // eslint-disable-line no-shadow
-    let { className } = this.props;
-    className = className + ' btn btn-default';
-    return (
-      <button className={className} onClick={increment}>
+    render() {
+        const { count, increment } = this.props; // eslint-disable-line no-shadow
+        let { className } = this.props;
+        className = className + ' btn btn-default';
+        return (
+            <button className={className} onClick={increment}>
         You have clicked me {count} time{count === 1 ? '' : 's'}.
       </button>
-    );
-  }
+        );
+    }
 }
 

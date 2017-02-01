@@ -5,19 +5,17 @@ import {
     App,
     Home,
     NotFound,
-  } from 'containers';
+} from 'containers';
 
 const Routes = () => {
-  return (
-    <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
-
-      { /* Routes */ }
-      { /* <Route path="about" component={About}/> */ }
-
-      <Route path="*" component={NotFound} status={404} />
-    </Route>
-  );
+    return (
+        <Route path="/" component={App}>
+            <IndexRoute component={Home}/>
+            { /* Routes */ }
+            { /* <Route path="about" component={About}/> */ }
+            <Route path="*" component={NotFound} status={404} />
+        </Route>
+    );
 };
 
 export default Routes;
