@@ -20,11 +20,11 @@ export default class InfoBar extends Component {
         const message = info ? info.message : 'no info!';
         const time = info && new Date(info.time).toString();
         return (
-            <div className={styles.infoBar + ' well'}>
-                <div className="container">
+            <footer className={styles.infoBar + ' well'}>
+                <p>
                     This is an info bar <strong>{message}</strong> <span className={styles.time}>{time}</span> <button className="btn btn-primary" onClick={load}>Reload from server</button>
-                </div>
-            </div>
+                </p>
+            </footer>
         );
     }
 
