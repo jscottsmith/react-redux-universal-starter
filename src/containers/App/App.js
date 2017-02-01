@@ -4,7 +4,7 @@ import { IndexLink } from 'react-router';
 import Helmet from 'react-helmet';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { InfoBar } from 'components';
+import { InfoBar, SiteNav } from 'components';
 import { push } from 'react-router-redux';
 import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
@@ -23,10 +23,13 @@ import { asyncConnect } from 'redux-async-connect';
         return Promise.all(promises);
     },
 }])
+
 @connect(
-  state => ({ user: state.auth.user }),
-  { logout, pushState: push })
+    state => ({ user: state.auth.user }),
+    { logout, pushState: push })
+
 export default class App extends Component {
+
     static propTypes = {
         children: PropTypes.object.isRequired,
         logout: PropTypes.func.isRequired,
@@ -40,10 +43,10 @@ export default class App extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (!this.props.user && nextProps.user) {
-      // login
+            // login
             this.props.pushState('/loginSuccess');
         } else if (this.props.user && !nextProps.user) {
-      // logout
+            // logout
             this.props.pushState('/');
         }
     }
@@ -54,12 +57,15 @@ export default class App extends Component {
     };
 
     render() {
-    // const {user} = this.props;
+        // const {user} = this.props;
         const styles = require('./App.scss');
 
         return (
-            <div className={styles.app}>
+            <main className={styles.app}>
+
                 <Helmet {...config.app.head}/>
+
+                <SiteNav />
 
                 <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
                     <h1>{config.app.title}</h1>
@@ -70,7 +76,8 @@ export default class App extends Component {
                 </div>
 
                 <InfoBar/>
-            </div>
+            </main>
         );
     }
+
 }
