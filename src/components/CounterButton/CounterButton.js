@@ -8,9 +8,9 @@ import { increment } from 'redux/modules/counter';
 )
 export default class CounterButton extends Component {
   static propTypes = {
+    className: PropTypes.string,
     count: PropTypes.number,
     increment: PropTypes.func.isRequired,
-    className: PropTypes.string,
   }
 
   props = {

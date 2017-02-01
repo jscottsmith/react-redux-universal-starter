@@ -7,7 +7,7 @@ import {
     NotFound,
   } from 'containers';
 
-export default () => {
+const Routes = () => {
   return (
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
@@ -19,3 +19,5 @@ export default () => {
     </Route>
   );
 };
+
+export default Routes;

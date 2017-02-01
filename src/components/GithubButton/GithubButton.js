@@ -23,13 +23,13 @@ const GithubButton = (props) => {
 };
 
 GithubButton.propTypes = {
-  user: React.PropTypes.string.isRequired,
+  count: React.PropTypes.bool,
+  height: React.PropTypes.number.isRequired,
+  large: React.PropTypes.bool,
   repo: React.PropTypes.string.isRequired,
   type: React.PropTypes.oneOf(['star', 'watch', 'fork', 'follow']).isRequired,
+  user: React.PropTypes.string.isRequired,
   width: React.PropTypes.number.isRequired,
-  height: React.PropTypes.number.isRequired,
-  count: React.PropTypes.bool,
-  large: React.PropTypes.bool,
 };
 
 export default GithubButton;
