@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { MiniInfoBar } from 'components';
 
 export default class About extends Component {
 
   state = {
-    showKitten: false
+    showKitten: false,
   }
 
-  handleToggleKitten = () => this.setState({showKitten: !this.state.showKitten});
+  handleToggleKitten = () => this.setState({ showKitten: !this.state.showKitten });
 
   render() {
-    const {showKitten} = this.state;
+    const { showKitten } = this.state;
     const kitten = require('./kitten.jpg');
     return (
       <div className="container">
@@ -25,7 +25,7 @@ export default class About extends Component {
             target="_blank">all the contributors</a>.
         </p>
 
-        <h3>Mini Bar <span style={{color: '#aaa'}}>(not that kind)</span></h3>
+        <h3>Mini Bar <span style={{ color: '#aaa' }}>(not that kind)</span></h3>
 
         <p>Hey! You found the mini info bar! The following component is display-only. Note that it shows the same
           time as the info bar.</p>
@@ -38,7 +38,7 @@ export default class About extends Component {
           Psst! Would you like to see a kitten?
 
           <button className={'btn btn-' + (showKitten ? 'danger' : 'success')}
-                  style={{marginLeft: 50}}
+                  style={{ marginLeft: 50 }}
                   onClick={this.handleToggleKitten}>
             {showKitten ? 'No! Take it away!' : 'Yes! Please!'}</button>
         </p>

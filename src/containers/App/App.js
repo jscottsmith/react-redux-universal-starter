@@ -10,7 +10,7 @@ import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
 
 @asyncConnect([{
-  promise: ({store: {dispatch, getState}}) => {
+  promise: ({ store: { dispatch, getState } }) => {
     const promises = [];
 
     if (!isInfoLoaded(getState())) {
@@ -21,21 +21,21 @@ import { asyncConnect } from 'redux-async-connect';
     }
 
     return Promise.all(promises);
-  }
+  },
 }])
 @connect(
-  state => ({user: state.auth.user}),
-  {logout, pushState: push})
+  state => ({ user: state.auth.user }),
+  { logout, pushState: push })
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    pushState: PropTypes.func.isRequired,
   };
 
   static contextTypes = {
-    store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -61,7 +61,7 @@ export default class App extends Component {
       <div className={styles.app}>
         <Helmet {...config.app.head}/>
 
-        <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
+        <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
           <h1>{config.app.title}</h1>
         </IndexLink>
 

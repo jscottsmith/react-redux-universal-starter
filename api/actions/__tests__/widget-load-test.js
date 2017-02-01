@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+import { expect } from 'chai';
 import load from '../widget/load';
 import sinon from 'sinon';
 
@@ -15,13 +15,13 @@ describe('widget load', () => {
     });
 
     it('uses the widgets from the session', () => {
-      return load({session: {widgets: ['a', 'b', 'c']}}).then(widgets => {
+      return load({ session: { widgets: ['a', 'b', 'c'] } }).then(widgets => {
         expect(widgets.length).to.equal(3);
       });
     });
 
     it('initializes the widgets ', () => {
-      return load({session: {}}).then(widgets => {
+      return load({ session: {} }).then(widgets => {
         expect(widgets.length).to.equal(4);
         expect(widgets[0].color).to.equal('Red');
       });
@@ -34,8 +34,8 @@ describe('widget load', () => {
     });
 
     it('rejects the call', () => {
-      return load({session: {}}).
-      then(
+      return load({ session: {} })
+      .then(
         ()=> {
         },
         (err)=> {
