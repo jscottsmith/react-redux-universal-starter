@@ -245,6 +245,8 @@
     "react/jsx-no-duplicate-props": 1,
     "react/jsx-no-undef": 1,
     "jsx-quotes": [1, "prefer-double"],
+    "react/jsx-indent": [1, 4],
+    "react/jsx-indent-props": [1, 4],
     "react/sort-prop-types": 1,
     "react/jsx-sort-props": 0,
     "react/jsx-uses-react": 1,
