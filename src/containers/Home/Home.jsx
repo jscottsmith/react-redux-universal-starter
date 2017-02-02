@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-const styles = require('./Home.scss');
+import styles from './Home.scss';
 
 export default class Home extends Component {
     render() {
