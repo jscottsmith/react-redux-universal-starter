@@ -5,5 +5,6 @@
  *
  */
 
+export Button from './Button/Button';
 export InfoBar from './InfoBar/InfoBar';
 export SiteNav from './SiteNav/SiteNav';

@@ -1,0 +1,54 @@
+//
+// Button
+// -----------------
+
+@import "../../sass/includes";
+
+
+.btn {
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0.8em 3em;
+    text-align: center;
+    border: 2px solid $gold;
+    color: $gold;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    transition: background $transTimeSlow,
+                border $transTimeSlow,
+                color $transTimeSlow;
+
+    &:hover {
+        color: $white;
+        background-color: $teal;
+        border: 2px solid $teal;
+    }
+    &:focus {}
+    &.active, &:active {}
+    &.disabled, &[disabled] {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    &.small {
+        padding: 0.4em 0.6em 0.3em 0.6em;
+    }
+}
+
+
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    outline: 0;
+    line-height: 1;
+    cursor: pointer;
+}
+
+@include tablet {
+    .btn {
+        width: auto;
+    }
+}

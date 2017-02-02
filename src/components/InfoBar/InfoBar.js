@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { load } from 'redux/modules/info';
+import Button from '../Button/Button';
 import styles from './InfoBar.scss';
 
 @connect(
@@ -22,7 +23,11 @@ export default class InfoBar extends Component {
         return (
             <footer className={styles.infoBar + ' well'}>
                 <p>
-                    This is an info bar <strong>{message}</strong> <span className={styles.time}>{time}</span> <button className="btn btn-primary" onClick={load}>Reload from server</button>
+                    This is an info bar. Message from the api: <strong>{message}</strong>
+                </p>
+                <Button onClick={load}>Reload from server</Button>
+                <p className={styles.time}>
+                    <strong>{time}</strong>
                 </p>
             </footer>
         );
