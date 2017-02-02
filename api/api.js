@@ -26,6 +26,7 @@ app.use((req, res) => {
     const { action, params } = mapUrl(actions, splittedUrlPath);
 
     if (action) {
+        console.log('Request made to the API at', req.url.yellow, 'Responded with', res.statusCode.toString().blue);
         action(req, params).then((result) => {
             if (result instanceof Function) {
                 result(res);
