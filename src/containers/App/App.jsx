@@ -61,7 +61,6 @@ export default class App extends Component {
     };
 
     render() {
-
         return (
             <main className={styles.app}>
                 <Helmet {...config.app.head}/>
@@ -75,7 +74,7 @@ export default class App extends Component {
                 <div className={styles.appContent}>
                     {this.props.children}
                 </div>
-                <InfoBar/>
+                <InfoBar />
             </main>
         );
     }
