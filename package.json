@@ -137,7 +137,7 @@
     "url-loader": "^0.5.7",
     "violet-paginator": "^1.8.1",
     "warning": "^2.1.0",
-    "webpack-isomorphic-tools": "^2.2.18"
+    "webpack-isomorphic-tools": "^2.6.6"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
