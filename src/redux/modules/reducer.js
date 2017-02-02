@@ -7,6 +7,7 @@ import { pagination } from 'violet-paginator';
 import auth from './auth';
 import counter from './counter';
 import info from './info';
+import home from './home';
 import widgets from './widgets';
 
 export default combineReducers({
@@ -19,6 +20,7 @@ export default combineReducers({
         counter3: counter,
     }),
     info,
+    home,
     pagination,
     widgets,
 });

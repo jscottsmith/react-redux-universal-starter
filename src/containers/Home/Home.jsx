@@ -1,19 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import styles from './Home.scss';
 
+import { isLoaded as isHomeLoaded, load as loadHome } from 'redux/modules/home';
+import { asyncConnect } from 'redux-async-connect';
+
+@asyncConnect([{
+    promise: ({ store: { dispatch, getState } }) => {
+        const promises = [];
+
+        if (!isHomeLoaded(getState())) {
+            promises.push(dispatch(loadHome()));
+        }
+
+        return Promise.all(promises);
+    },
+}])
+
+@connect(
+    state => ({ home: state.home.data }))
+
 export default class Home extends Component {
+
+    static propTypes = {
+        home: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            subhead: PropTypes.string.isRequired,
+            content: PropTypes.string.isRequired,
+        }),
+    };
+
     render() {
+        const { subhead, title, content } = this.props.home;
         return (
             <div className={styles.home}>
                 <Helmet title="Home"/>
-                <h1>Home</h1>
-                <h2>A starter for React Redux web applications</h2>
+                <h1>{title}</h1>
+                <h2>{subhead}</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {content}
                 </p>
             </div>
         );
