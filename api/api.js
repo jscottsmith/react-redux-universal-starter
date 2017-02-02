@@ -50,13 +50,10 @@ if (config.apiPort) {
         if (err) {
             console.error(err);
         }
-
-        const green = '\x1b[34m';
-        const red = '\x1b[31m';
-        const dim = '\x1b[2m';
-        console.log('\n', dim, '==================| API Ready |=================\n');
-        console.log(green, `==> 🔮  API is running on port ${config.apiPort}`);
-        console.log(green, '==> 💦  Send requests to', red, `http://${config.apiHost}:${config.apiPort}`);
+        console.log('================|  API Ready  |================='.dim);
+        console.log('==>'.dim, `🔮  API is running on port ${config.apiPort}`.blue);
+        console.log('==>'.dim, '💦  Send requests to'.blue, `http://${config.apiHost}:${config.apiPort}`.yellow);
+        console.log('================================================'.dim);
     });
 } else {
     console.error('==>     ERROR: No PORT environment variable has been specified');

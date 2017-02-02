@@ -117,12 +117,11 @@ if (config.port) {
         if (err) {
             console.error(err);
         }
-        const green = '\x1b[32m';
-        const red = '\x1b[31m';
-        const dim = '\x1b[2m';
-        console.log('\n', dim, '================| Server Ready |================\n');
-        console.log(green, `==> 🌴  ${config.app.title} is running, talking to API server on ${config.apiPort}`);
-        console.log(green, '==> 💊  Open', red, `http://${config.host}:${config.port}`, green, 'in a browser to view the app.');
+
+        console.log('================| Server Ready |================'.dim);
+        console.log('==>'.dim, `🌴  ${config.app.title} is running`.green);
+        console.log('==>'.dim, '💊  Open'.green, `http://${config.host}:${config.port}`.yellow, 'in a browser'.green);
+        console.log('================================================'.dim);
     });
 } else {
     console.error('==> ☠   ERROR: No PORT environment variable has been specified');
