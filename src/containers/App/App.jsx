@@ -8,6 +8,9 @@ import { InfoBar, SiteNav } from 'components';
 import { push } from 'react-router-redux';
 import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
+
+import logo from '../../../static/logo.png';
+import styles from './App.scss';
 import '../../sass/styles.scss';
 
 @asyncConnect([{
@@ -58,24 +61,20 @@ export default class App extends Component {
     };
 
     render() {
-        // const {user} = this.props;
-        const styles = require('./App.scss');
 
         return (
             <main className={styles.app}>
-
                 <Helmet {...config.app.head}/>
-
-                <SiteNav />
-
-                <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
-                    <h1>{config.app.title}</h1>
-                </IndexLink>
-
+                <header>
+                    <img src={logo} width="80" height="80" alt="" />
+                    <h1>
+                        <IndexLink to="/">{config.app.title}</IndexLink>
+                    </h1>
+                    <SiteNav />
+                </header>
                 <div className={styles.appContent}>
                     {this.props.children}
                 </div>
-
                 <InfoBar/>
             </main>
         );
