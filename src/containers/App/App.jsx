@@ -1,11 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { IndexLink } from 'react-router';
 import Helmet from 'react-helmet';
-import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
+import {
+    isLoaded as isInfoLoaded,
+    load as loadInfo,
+} from 'redux/modules/info';
 import {
     InfoBar,
     SiteNav,
-    Svg } from 'components';
+    Svg,
+} from 'components';
 import config from '../../config';
 import { asyncConnect } from 'redux-connect';
 import logo from '../../../static/logo.svg';
@@ -38,7 +42,7 @@ export default class App extends Component {
         return (
             <main className={styles.app}>
                 <Helmet {...config.app.head}/>
-                <Svg svg={logo} style={{ height: 50, width: 100 }}/>
+                <Svg svg={logo} style={{ height: 50, width: 100, fill: '#CAD2C5' }}/>
                 <header>
                     <h1>
                         <IndexLink to="/">{config.app.title}</IndexLink>

@@ -11,17 +11,19 @@ $graphite:                  #5F626D;
 $green:                     #8bd5a1;
 $sage:                      #84A98C;
 $thyme:                     #CAD2C5;
-$gold:                      #9F8548;
+$gold:                      #CFAB65;
 $teal:                      #59C3C3;
 $sand:                      #EBEBEB;
 $cotton:                    #EDEEF2;
 $purple:                    #6158A5;
 $grape:                     #4C437A;
-
+$fadedMint:                 #EDF8F4;
+$pinky:                     #ECBAB4;
+$aqua:                      #47BEC9;
 
 // Scaffolding
 // -------------------------
-$bodyBackground:            $sand !default;
+$bodyBackground:            $white !default;
 $hrBorder:                  $ash !default;
 
 // Typography
@@ -29,28 +31,29 @@ $hrBorder:                  $ash !default;
 
 $sans:                      sans-serif !default;
 $serif:                     serif !default;
-$sourceSans:                "Source Sans Pro", $sans !default;
+$workSans:                  "Work Sans", $sans !default;
 
 $thin:                      100 !default;
 $light:                     300 !default;
 $regular:                   400 !default;
 $medium:                    500 !default;
 $bold:                      600 !default;
-$ultraBold:                 800 !default;
+$heavy:                     700 !default;
+$ultra:                     800 !default;
 
 $textColor:                 $graphite;
 $baseFontSize:              10px;
-$baseFontWeight:            $regular;
-$baseFontFamily:            $sourceSans;
+$baseFontWeight:            $light;
+$baseFontFamily:            $workSans;
 $baseLineHeight:            20px;
 
-$linkColor:                 $gold;
-$linkWeight:                $bold;
-$linkColorHover:            $teal;
+$linkColor:                 $aqua;
+$linkWeight:                $ultra;
+$linkColorHover:            $gold;
 
-$headingsFontWeight:        $bold;
+$headingsFontWeight:        $ultra;
 $headingsFontFamily:        inherit;
-$headingsColor:             $grape;
+$headingsColor:             $pinky;
 
 
 // Borders

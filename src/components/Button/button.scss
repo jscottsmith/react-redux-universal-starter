@@ -9,13 +9,13 @@
     width: 100%;
     display: inline-block;
     cursor: pointer;
-    padding: 0.8em 3em;
+    padding: 0.8em 1em;
     text-align: center;
-    border: 2px solid $gold;
+    border: 5px solid $gold;
     color: $gold;
-    font-weight: 700;
+    font-weight: $ultra;
     text-transform: uppercase;
-    font-size: 1.4em;
+    font-size: 2em;
     transition: background $transTimeSlow,
                 border $transTimeSlow,
                 color $transTimeSlow;
@@ -23,7 +23,7 @@
     &:hover {
         color: $white;
         background-color: $teal;
-        border: 2px solid $teal;
+        border: 5px solid $teal;
     }
     &:focus {}
     &.active, &:active {}
@@ -33,7 +33,7 @@
     }
 
     &.small {
-        padding: 0.4em 0.6em 0.3em 0.6em;
+        padding: 0.4em 0.4em 0.3em 0.4em;
     }
 }
 
