@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { InfoBar, SiteNav } from 'components';
 import config from '../../config';
-import { asyncConnect } from 'redux-async-connect';
+import { asyncConnect } from 'redux-connect';
 
 import logo from '../../../static/logo.png';
 import styles from './App.scss';

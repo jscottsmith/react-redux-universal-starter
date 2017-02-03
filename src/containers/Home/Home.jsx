@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import styles from './Home.scss';
 
 import { isLoaded as isHomeLoaded, load as loadHome } from 'redux/modules/home';
-import { asyncConnect } from 'redux-async-connect';
+import { asyncConnect } from 'redux-connect';
 
 @asyncConnect([{
     promise: ({ store: { dispatch, getState } }) => {
