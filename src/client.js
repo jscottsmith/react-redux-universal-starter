@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
+import welcome from './utils/welcome';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -20,6 +21,8 @@ const dest = document.getElementById('content');
 const store = createStore(_browserHistory, client, window.__data);
 const history = syncHistoryWithStore(_browserHistory, store);
 
+welcome();
+
 const render = (props) => (
     <ReduxAsyncConnect
         {...props}
@@ -27,6 +30,7 @@ const render = (props) => (
         filter={item => !item.deferred}
     />
 );
+
 const component = (
     <Router render={render} history={history}>
         {getRoutes(store)}
