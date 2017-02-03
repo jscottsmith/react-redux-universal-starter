@@ -6,5 +6,6 @@
  */
 
 export Button from './Button/Button';
+export Svg from './Svg/Svg';
 export InfoBar from './InfoBar/InfoBar';
 export SiteNav from './SiteNav/SiteNav';
