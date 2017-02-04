@@ -9,6 +9,7 @@ import path from 'path';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import Html from './helpers/Html';
+import getRouteStatus from './helpers/getRouteStatus';
 import PrettyError from 'pretty-error';
 import http from 'http';
 
@@ -97,7 +98,14 @@ app.use((req, res) => {
                     </Provider>
                 );
 
-                res.status(200);
+                // Set the server response status code of routes with
+                // a defined status, e.g. <Route path="*" status={404} />
+                const status = getRouteStatus(renderProps.routes);
+                if (status) {
+                    res.status(status);
+                } else {
+                    res.status(200);
+                }
 
                 global.navigator = { userAgent: req.headers['user-agent'] };
 
