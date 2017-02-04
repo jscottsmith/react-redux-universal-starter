@@ -8,6 +8,7 @@ export default function SiteNav() {
             <ul>
                 <li><IndexLink to="/">Home</IndexLink></li>
                 <li><Link to="/about">About</Link></li>
+                <li><Link to="/404">Four O' Four</Link></li>
             </ul>
         </nav>
     );
