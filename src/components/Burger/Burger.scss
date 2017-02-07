@@ -5,8 +5,8 @@
 @import "../../sass/includes";
 
 $barWidth: 3rem;
-$barHeight: 0.4rem;
-$barSpacing: 1rem;
+$barHeight: 4px;
+$barSpacing: 8px;
 $barColor: $gold;
 $barColorActive: $teal;
 $burgerHeight: $barHeight * 3 + $barSpacing * 2;
@@ -18,6 +18,8 @@ $burgerHeight: $barHeight * 3 + $barSpacing * 2;
     height: $burgerHeight;
     font-size: 1em;
     cursor: pointer;
+    align-self: center;
+    margin-left: auto;
 
     &.isActive {
         .patty {

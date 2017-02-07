@@ -4,10 +4,26 @@
 
 @import "../../sass/includes";
 
-:local(.root) {
+.nav {
+    @extend %spread;
+    display: none;
+    z-index: 99;
 
+    &.isOpen {
+        display: block;
+        background-color: $blue;
+    }
 }
 
-:local(.links) {
+.links {
+    padding: 2em;
+    display: flex;
+    height: 100%;
+    flex-flow: row wrap;
+    align-content: center;
+}
 
+.link {
+    font-size: 4em;
+    width: 100%;
 }

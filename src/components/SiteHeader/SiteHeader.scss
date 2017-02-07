@@ -4,17 +4,24 @@
 
 @import "../../sass/includes";
 
-:local(.root) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: $blue;
+.siteHeader {
 
-    h1 {
-        font-size: 1.6em;
+    .navbar {
+        padding: 2em;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: $blue;
+        display: flex;
+        flex-flow: row wrap;
+        z-index: 100;
+
+        h1 {
+            margin-left: 1em;
+            font-size: 1.6em;
+        }
     }
-
     a:hover:before {
         border-color: $thyme;
     }

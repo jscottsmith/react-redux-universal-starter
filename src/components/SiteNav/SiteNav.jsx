@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { IndexLink, Link } from 'react-router';
+import cx from 'classnames';
 import style from './SiteNav.scss';
 
-export default function SiteNav() {
+export default function SiteNav(props) {
+    const { isOpen } = props;
+    const className = cx(style.nav, {
+        [style.isOpen]: isOpen,
+    });
     return (
-        <nav className={style.root}>
-            <h3>Site Navigation</h3>
+        <nav className={className}>
             <ul className={style.links}>
-                <li><IndexLink to="/">Home</IndexLink></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/404">Four O' Four</Link></li>
+                <li className={style.link}><IndexLink to="/">Home</IndexLink></li>
+                <li className={style.link}><Link to="/about">About</Link></li>
+                <li className={style.link}><Link to="/404">Four O' Four</Link></li>
             </ul>
         </nav>
     );
 }
+
+SiteNav.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+};

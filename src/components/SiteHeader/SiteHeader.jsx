@@ -26,13 +26,15 @@ export default class SiteHeader extends Component {
         const { navOpen } = this.state;
 
         return (
-            <header className={styles.root}>
-                <Svg svg={logo} style={{ height: 50, width: 100, fill: '#CAD2C5' }}/>
-                <h1>
-                    <IndexLink to="/">{title}</IndexLink>
-                </h1>
-                <Burger isActive={navOpen} onClick={this.toggle} />
-                <SiteNav />
+            <header className={styles.siteHeader}>
+                <div className={styles.navbar}>
+                    <Svg svg={logo} style={{ height: 30, width: 60, fill: '#CAD2C5' }}/>
+                    <h1>
+                        <IndexLink to="/">{title}</IndexLink>
+                    </h1>
+                    <Burger isActive={navOpen} onClick={this.toggle} />
+                </div>
+                <SiteNav isOpen={navOpen} />
             </header>
         );
     }
