@@ -1,0 +1,82 @@
+//
+// Burger
+// ---------------------------
+
+@import "../../sass/includes";
+
+$barWidth: 3rem;
+$barHeight: 0.4rem;
+$barSpacing: 1rem;
+$barColor: $gold;
+$barColorActive: $teal;
+$burgerHeight: $barHeight * 3 + $barSpacing * 2;
+
+.burger {
+    position: relative;
+    display: inline-block;
+    width: $barWidth;
+    height: $burgerHeight;
+    font-size: 1em;
+    cursor: pointer;
+
+    &.isActive {
+        .patty {
+            background-color: transparent;
+            &:after {
+                width: $barWidth;
+                top: 0;
+                background-color: $barColorActive;
+                transform: rotate(45deg);
+                transition: width $transTimeFast $easeOut,
+                            top $transTimeFast $easeOut,
+                            background $transTimeFast $transTimeFast $easeOut,
+                            transform $transTimeFast $transTimeFast $easeOutBack;
+            }
+
+            &:before {
+                bottom: 0;
+                background-color: $barColorActive;
+                transform: rotate(-45deg);
+                transition: bottom $transTimeFast $easeOut,
+                            background $transTimeFast $transTimeFast $easeOut,
+                            transform $transTimeFast $transTimeFast $easeOutBack;
+            }
+        }
+    }
+}
+
+.patty {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: $barWidth;
+    height: $barHeight;
+    transform: translateY($barSpacing);
+    background-color: $barColor;
+    transition: all $transTimeFast $transTimeFast;
+
+    &:after,
+    &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        height: $barHeight;
+        width: $barWidth;
+        background-color: $barColor;
+    }
+
+    &:before {
+        bottom: $barSpacing;
+        transition: bottom $transTimeFast $transTimeFast $easeOut,
+                    background $transTimeFast $transTimeFast $easeOut,
+                    transform $transTimeFast $easeInBack;
+    }
+
+    &:after {
+        top: $barSpacing;
+        transition: width $transTimeFast $easeOut,
+                    top $transTimeFast $transTimeFast $easeOut,
+                    background $transTimeFast $transTimeFast $easeOut,
+                    transform $transTimeFast $easeInBack;
+    }
+}

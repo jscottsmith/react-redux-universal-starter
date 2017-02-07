@@ -1,0 +1,21 @@
+//
+// Site Header
+// ---------------------------
+
+@import "../../sass/includes";
+
+:local(.root) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $blue;
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    a:hover:before {
+        border-color: $thyme;
+    }
+}
