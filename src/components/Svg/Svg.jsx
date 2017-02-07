@@ -20,8 +20,8 @@ export default function Svg(props) {
 Svg.propTypes = {
     className: PropTypes.string,
     el: PropTypes.string.isRequired,
-    svg: PropTypes.string.isRequired,
     style: PropTypes.object,
+    svg: PropTypes.string.isRequired,
 };
 
 Svg.defaultProps = {
